@@ -1,0 +1,62 @@
+---
+/**
+ * WorldMapSection.astro - Sección de Mapa Mundial
+ * 
+ * Muestra un mapa interactivo con las rutas de exportación desde Argentina
+ */
+import { WorldMapDemo } from '../ui/worldmap.jsx';
+---
+
+<section id="mapa-global" class="relative py-12 md:py-16 bg-white overflow-hidden mt-26">
+  
+  {/* Contenido principal */}
+  {/* Círculos decorativos fondo */}
+  <div class="pointer-events-none select-none absolute inset-0 z-0">
+    <div class="absolute top-[18%] left-[6%] w-56 h-56 bg-green-100 rounded-full opacity-60 blur-2xl animate-pulse-slow"></div>
+    <div class="absolute top-[30%] right-[10%] w-44 h-44 bg-green-200 rounded-full opacity-50 blur-2xl animate-pulse-slow2"></div>
+    <div class="absolute top-[55%] left-[25%] w-32 h-32 bg-green-200 rounded-full opacity-40 blur-2xl animate-pulse-slow3"></div>
+    <div class="absolute top-[60%] right-[20%] w-24 h-24 bg-green-300 rounded-full opacity-40 blur-2xl animate-pulse-slow"></div>
+    <div class="absolute top-[38%] left-[60%] w-20 h-20 bg-green-300 rounded-full opacity-30 blur-2xl animate-pulse-slow2"></div>
+  </div>
+  </div>
+  <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    {/* Título principal */}
+    <div class="text-center mb-8">
+      <h2 class="text-4xl md:text-5xl font-bold text-green-900 mb-4">
+        Nuestra Presencia Global
+      </h2>
+      <p class="text-xl md:text-2xl font-semibold text-green-700 italic max-w-4xl mx-auto">
+        Conectando San Juan con los principales mercados del mundo
+      </p>
+    </div>
+
+    {/* Mapa Mundial */}
+    <div class="bg-white rounded-2xl shadow-lg p-4 md:p-6 border border-gray-200">
+      <div class="w-full" style="min-height: 350px;">
+        <WorldMapDemo client:only="react" />
+      </div>
+      
+      {/* Leyenda del mapa */}
+      <div class="mt-6 flex flex-wrap justify-center gap-4 text-sm">
+        <div class="flex items-center gap-2">
+          <div class="w-2.5 h-2.5 rounded-full bg-green-700 animate-pulse"></div>
+          <span class="text-gray-700 font-medium">🇦🇷 San Juan (Origen)</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="w-2.5 h-2.5 rounded-full bg-green-600"></div>
+          <span class="text-gray-700">🇧🇷 São Paulo</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="w-2.5 h-2.5 rounded-full bg-green-600"></div>
+          <span class="text-gray-700">🇺🇾 Montevideo</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="w-2.5 h-2.5 rounded-full bg-green-600"></div>
+          <span class="text-gray-700">🇦🇪 Dubai</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
