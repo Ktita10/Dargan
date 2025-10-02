@@ -18,7 +18,6 @@ import Hero from '../components/sections/desktop/Hero.astro';
 import About from '../components/sections/desktop/About.astro';
 import WorldMapSection from '../components/sections/desktop/WorldMapSection.astro';
 import ExportSection from '../components/sections/desktop/ExportSection.astro';
-import TiposAlfalfas from '../components/sections/desktop/TiposAlfalfas.astro';
 import Productos from '../components/sections/desktop/Productos.astro';
 import GaleriaDesktop from '../components/sections/desktop/GaleriaDesktop.astro';
 import FAQ from '../components/sections/desktop/FAQ.astro';
@@ -78,14 +77,9 @@ import CTAMobile from '../components/sections/mobile/CTAMobile.astro';
 	<div class="block md:hidden">
 		<TiposAlfalfasMobile />
 	</div>
-	<div class="hidden md:block">
-		<TiposAlfalfas />
-	</div>
+	
 
 	{/* Productos: Mobile < 768px | Desktop >= 768px */}
-	<div class="block md:hidden">
-		<ProductosMobile />
-	</div>
 	<div class="hidden md:block">
 		<Productos />
 	</div>

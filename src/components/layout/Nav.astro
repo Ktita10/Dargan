@@ -18,11 +18,6 @@ const navigation = [
     { title: "Nosotros", path: "#nosotros" },
     { title: "Exportación", path: "#exportacion" },
     { title: "Mapa Global", path: "#mapa-global" },
-    { title: "Tipos de Alfalfa", path: "#tipos-alfalfa" },
-    { title: "Productos", path: "#productos" },
-    { title: "Galería", path: "#galeria" },
-    { title: "FAQ", path: "#faq" },
-    { title: "Contacto", path: "#contacto" }
 ];
 ---
 
@@ -49,12 +44,12 @@ const navigation = [
             </div>
         </div>
         <div class="flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 hidden" id="mobile-menu">
-            <ul class="justify-center items-center space-y-8 md:flex md:space-x-6 md:space-y-0">
+            <ul class="justify-center items-center space-y-8 md:flex md:space-x-12 md:space-y-0">
                 {navigation.map((item) => (
-                    <li class="text-green-700 hover:text-green-900 transition-colors duration-200">
+                    <li class="text-black hover:text-black transition-colors duration-200">
                         <a 
                             href={item.path}
-                            class="block py-2 px-3 rounded-md hover:bg-green-50 md:hover:bg-transparent md:p-0 font-medium"
+                            class="block py-2 px-6 rounded-md hover:bg-green-50 md:hover:bg-transparent md:p-0 font-medium text-black hover:text-black"
                         >
                             {item.title}
                         </a>

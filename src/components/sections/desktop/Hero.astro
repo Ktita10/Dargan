@@ -16,6 +16,11 @@
 import { HeroParallaxDemo } from '../../../ui/hero/HeroParallax.jsx';
 ---
 
+<!-- Preload de imágenes críticas del Hero para carga instantánea -->
+<link rel="preload" as="image" href="/images/cosechadora.png" fetchpriority="high" />
+<link rel="preload" as="image" href="/images/alfalfa.png" />
+<link rel="preload" as="image" href="/images/tractor.png" />
+
 <!-- Contenedor del Hero con altura completa de viewport -->
 <section id="inicio" class="relative w-full min-h-screen bg-gradient-to-b from-green-50 to-white dark:from-green-950 dark:to-gray-900 pt-20">
   <!-- 

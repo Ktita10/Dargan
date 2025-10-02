@@ -57,7 +57,7 @@ const faqsAlfalfa = [
 
 export default function FAQView() {
   return (
-    <div className="py-20 md:py-20 bg-gradient-to-b from-white via-green-50 to-white relative overflow-hidden">
+  <div className="bg-[#F5F5F5] relative overflow-hidden">
       {/* Elementos decorativos de fondo */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-20 left-10 w-72 h-72 bg-green-100 rounded-full opacity-30 blur-3xl"></div>

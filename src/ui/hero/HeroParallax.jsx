@@ -16,6 +16,25 @@ import { HeroParallax } from "./hero-parallax";
  * @dependencies hero-parallax.tsx (componente base)
  */
 export function HeroParallaxDemo() {
+  // Preload de las primeras imágenes críticas para carga instantánea
+  React.useEffect(() => {
+    const criticalImages = [
+      "/images/cosechadora.png",
+      "/images/alfalfa.png",
+      "/images/tractor.png",
+      "/images/paisaje.png"
+    ];
+    
+    criticalImages.forEach((src, index) => {
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'image';
+      link.href = src;
+      if (index === 0) link.fetchpriority = 'high';
+      document.head.appendChild(link);
+    });
+  }, []);
+
   return <HeroParallax products={products} />;
 }
 
