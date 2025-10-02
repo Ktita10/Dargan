@@ -1,0 +1,20 @@
+---
+/**
+ * FAQ.astro - Sección de Preguntas Frecuentes
+ * 
+ * @description Acordeón interactivo con preguntas frecuentes sobre productos y servicios
+ * @features
+ * - Acordeón expandible/colapsable
+ * - Preguntas sobre semillas, calidad, envíos, etc.
+ * - Diseño limpio y accesible
+ * - Animaciones smooth
+ * 
+ * @uses FAQView (src/ui/faq/FAQ-react.jsx)
+ * @importedIn src/pages/index.astro
+ */
+import FAQView from '../../../ui/faq/FAQ-react.jsx';
+---
+
+<section id="faq" class="pt-20">
+  <FAQView client:load />
+</section>

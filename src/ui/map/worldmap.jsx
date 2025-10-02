@@ -1,6 +1,19 @@
 "use client";
 import WorldMap from "./world-map";
 
+/**
+ * worldmap.jsx - Componente Demo del Mapa Mundial
+ * 
+ * @description Configuración del mapa mundial con rutas de exportación
+ * @features
+ * - Rutas desde San Juan, Argentina
+ * - Destinos: São Paulo, Montevideo, Dubai
+ * - Líneas animadas con color verde (#15803d)
+ * - Puntos interactivos en origen y destinos
+ * 
+ * @usedIn src/components/sections/WorldMapSection.astro
+ * @dependencies world-map.tsx (componente base)
+ */
 export function WorldMapDemo() {
   return (
     <div className="w-full h-full min-h-[400px] flex items-center justify-center">

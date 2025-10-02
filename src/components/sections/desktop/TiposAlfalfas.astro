@@ -1,0 +1,66 @@
+---
+/**
+ * TiposAlfalfas.astro - Sección de Tipos de Alfalfa
+ * 
+ * @description Carrusel interactivo mostrando las 3 variedades de alfalfa
+ * @features
+ * - Carrusel 3D con las variedades: Patricia, Monarca, Araucana
+ * - Características destacadas de cada variedad
+ * - Navegación con flechas
+ * - Animaciones y efectos hover
+ * - Círculos decorativos animados
+ * 
+ * @uses Carousel (src/ui/carousel/carousel.tsx)
+ * @importedIn src/pages/index.astro
+ */
+import Carousel from "../../../ui/carousel/carousel";
+---
+
+<section id="tipos-alfalfa" class="relative pt-28 pb-20 md:pb-32 bg-white overflow-hidden min-h-screen flex items-center">
+  {/* Círculos flotantes de fondo */}
+  <div class="pointer-events-none select-none absolute inset-0 z-0">
+    <div class="absolute top-[18%] left-[6%] w-56 h-56 bg-green-100 rounded-full opacity-60 blur-2xl animate-pulse-slow"></div>
+    <div class="absolute top-[30%] right-[10%] w-44 h-44 bg-green-200 rounded-full opacity-50 blur-2xl animate-pulse-slow2"></div>
+    <div class="absolute top-[55%] left-[25%] w-32 h-32 bg-green-200 rounded-full opacity-40 blur-2xl animate-pulse-slow3"></div>
+    <div class="absolute top-[60%] right-[20%] w-24 h-24 bg-green-300 rounded-full opacity-40 blur-2xl animate-pulse-slow"></div>
+    <div class="absolute top-[38%] left-[60%] w-20 h-20 bg-green-300 rounded-full opacity-30 blur-2xl animate-pulse-slow2"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+    <div class="flex flex-col justify-center">
+      {/* Títulos centrados arriba */}
+      <div class="text-center mb-12 md:mb-16 space-y-4">
+        <h1 class="text-4xl md:text-5xl font-bold text-green-900">
+          Nuestros Productos
+        </h1>
+        <h2 class="text-xl md:text-2xl font-semibold text-green-700 italic max-w-4xl mx-auto">
+          Tres variedades de alfalfa de alta calidad, adaptadas a diferentes necesidades y condiciones.
+        </h2>
+      </div>
+
+      {/* Carrusel */}
+      <div class="relative w-full">
+        <Carousel 
+          client:load
+          slides={[
+            {
+              title: "Patricia",
+              button: "Descubrir Patricia",
+              src: "/images/Patricia.png"
+            },
+            {
+              title: "Monarca", 
+              button: "Conocer Monarca",
+              src: "/images/Monarca.png"
+            },
+            {
+              title: "Araucana",
+              button: "Explorar Araucana",
+              src: "/images/Araucana.png"
+            }
+          ]}
+        />
+      </div>
+    </div>
+  </div>
+</section>

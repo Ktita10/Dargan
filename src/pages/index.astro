@@ -1,18 +1,116 @@
 ---
+/**
+ * index.astro - Página Principal
+ * 
+ * @description Landing page principal con renderizado condicional mobile/desktop
+ * @features
+ * - Renderizado condicional según breakpoint (< 768px = mobile, >= 768px = desktop)
+ * - Versiones optimizadas para cada dispositivo
+ * - Sin duplicación de contenido
+ * - Performance optimizada
+ */
+
 import Layout from '../layouts/Layout.astro';
-import Nav from '../components/Nav.astro';
-import Hero from '../components/Hero.astro';
-import About from '../components/About.astro';
-import WorldMapSection from '../components/WorldMapSection.astro';
-import ExportSection from '../components/ExportSection.astro';
-import Productos from '../components/Productos.astro';
+
+// Componentes Desktop
+import Nav from '../components/layout/Nav.astro';
+import Hero from '../components/sections/desktop/Hero.astro';
+import About from '../components/sections/desktop/About.astro';
+import WorldMapSection from '../components/sections/desktop/WorldMapSection.astro';
+import ExportSection from '../components/sections/desktop/ExportSection.astro';
+import TiposAlfalfas from '../components/sections/desktop/TiposAlfalfas.astro';
+import Productos from '../components/sections/desktop/Productos.astro';
+import GaleriaDesktop from '../components/sections/desktop/GaleriaDesktop.astro';
+import FAQ from '../components/sections/desktop/FAQ.astro';
+import CTA from '../components/sections/desktop/CTA.astro';
+import Footer from '../components/layout/Footer.astro';
+
+// Componentes Mobile
+import NavMobile from '../components/layout/NavMobile.astro';
+import HeroMobile from '../components/sections/mobile/HeroMobile.astro';
+import AboutMobile from '../components/sections/mobile/AboutMobile.astro';
+import ExportSectionMobile from '../components/sections/mobile/ExportSectionMobile.astro';
+import TiposAlfalfasMobile from '../components/sections/mobile/TiposAlfalfasMobile.astro';
+import ProductosMobile from '../components/sections/mobile/ProductosMobile.astro';
+import GaleriaMobile from '../components/sections/mobile/GaleriaMobile.astro';
+import CTAMobile from '../components/sections/mobile/CTAMobile.astro';
 ---
 
 <Layout>
-	<Nav />
-	<Hero />
-	<About />
-	<WorldMapSection />
-	<ExportSection />
-	<Productos />
+	{/* Navegación: Mobile < 768px | Desktop >= 768px */}
+	<div class="block md:hidden">
+		<NavMobile />
+	</div>
+	<div class="hidden md:block">
+		<Nav />
+	</div>
+
+	{/* Hero: Mobile < 768px | Desktop >= 768px */}
+	<div class="block md:hidden">
+		<HeroMobile />
+	</div>
+	<div class="hidden md:block">
+		<Hero />
+	</div>
+
+	{/* About: Mobile < 768px | Desktop >= 768px */}
+	<div class="block md:hidden">
+		<AboutMobile />
+	</div>
+	<div class="hidden md:block">
+		<About />
+	</div>
+
+	{/* Export Section: Mobile < 768px | Desktop >= 768px */}
+	<div class="block md:hidden">
+		<ExportSectionMobile />
+	</div>
+	<div class="hidden md:block">
+		<ExportSection />
+	</div>
+
+	{/* World Map: Solo Desktop >= 768px */}
+	<div class="hidden md:block">
+		<WorldMapSection />
+	</div>
+
+	{/* Tipos de Alfalfas: Mobile < 768px | Desktop >= 768px */}
+	<div class="block md:hidden">
+		<TiposAlfalfasMobile />
+	</div>
+	<div class="hidden md:block">
+		<TiposAlfalfas />
+	</div>
+
+	{/* Productos: Mobile < 768px | Desktop >= 768px */}
+	<div class="block md:hidden">
+		<ProductosMobile />
+	</div>
+	<div class="hidden md:block">
+		<Productos />
+	</div>
+
+	{/* Galería: Mobile < 768px | Desktop >= 768px */}
+	<div class="block md:hidden">
+		<GaleriaMobile />
+	</div>
+	<div class="hidden md:block">
+		<GaleriaDesktop />
+	</div>
+
+	{/* FAQ: Solo Desktop >= 768px */}
+	<div class="hidden md:block">
+		<FAQ />
+	</div>
+
+	{/* CTA: Mobile < 768px | Desktop >= 768px */}
+	<div class="block md:hidden">
+		<CTAMobile />
+	</div>
+	<div class="hidden md:block">
+		<CTA />
+	</div>
+
+	{/* Footer: Responsive con React, se muestra en ambos */}
+	<Footer />
 </Layout>

@@ -1,13 +1,22 @@
 ---
 /**
- * WorldMapSection.astro - Sección de Mapa Mundial
+ * WorldMapSection.astro - Sección Mapa de Presencia Global
  * 
- * Muestra un mapa interactivo con las rutas de exportación desde Argentina
+ * @description Muestra mapa mundial interactivo con rutas de exportación
+ * @features
+ * - Mapa interactivo con animaciones
+ * - Rutas desde San Juan, Argentina
+ * - Destinos: Brasil, Dubai, Uruguay
+ * - Leyenda con indicadores visuales
+ * - Círculos decorativos animados
+ * 
+ * @uses WorldMapDemo (src/ui/map/worldmap.jsx)
+ * @importedIn src/pages/index.astro
  */
-import { WorldMapDemo } from '../ui/worldmap.jsx';
+import { WorldMapDemo } from '../../../ui/map/worldmap.jsx';
 ---
 
-<section id="mapa-global" class="relative py-12 md:py-16 bg-white overflow-hidden mt-26">
+<section id="mapa-global" class="relative pt-20 pb-12 md:pb-16 bg-white overflow-hidden">
   
   {/* Contenido principal */}
   {/* Círculos decorativos fondo */}

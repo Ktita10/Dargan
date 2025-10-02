@@ -1,0 +1,63 @@
+---
+/**
+ * AboutMobile.astro - Sección "Quiénes Somos" Mobile
+ * 
+ * @description Versión mobile optimizada de la sección About
+ * @features
+ * - Layout vertical optimizado para pantallas pequeñas
+ * - Imágenes decorativas responsivas
+ * - Texto centrado y legible
+ * - Spacing optimizado para touch
+ * - Círculos decorativos ajustados
+ * 
+ * @importedIn src/components/sections/About.astro (solo visible en mobile)
+ */
+---
+
+<section id="nosotros" class="relative pt-4 pb-2 bg-white min-h-[70vh] overflow-hidden">
+
+  {/* Contenido central */}
+  <div class="max-w-xl mx-auto px-4 w-full relative z-10">
+    <div class="flex flex-col justify-center items-center text-center space-y-6">
+      {/* Títulos */}
+      <div class="space-y-3">
+        <h1 class="text-3xl font-bold text-green-900">
+          ¿Quiénes somos?
+        </h1>
+        <h2 class="text-lg font-semibold text-green-700 italic">
+          DORGAN es una empresa familiar con más de 20 años de trayectoria en el rubro agropecuario.
+        </h2>
+      </div>
+      
+      {/* Descripción */}
+      <div class="space-y-4">
+        <p class="text-base font-medium text-gray-800 leading-relaxed">
+          Nos especializamos en la <span class="text-green-700 font-bold">producción</span> y <span class="text-green-700 font-bold">comercialización</span> de <span class="text-green-700 font-bold">semillas de alfalfa de alta calidad</span>, adaptadas a distintas <span class="text-green-700 font-bold">condiciones de suelo y clima</span>.
+        </p>
+        <p class="text-base font-medium text-gray-800 leading-relaxed">
+          Apostamos por el <span class="text-green-700 font-bold">crecimiento del sector</span>, brindando <span class="text-green-700 font-bold">productos confiables</span>, <span class="text-green-700 font-bold">rendidores</span> y con <span class="text-green-700 font-bold">respaldo técnico personalizado</span>.
+        </p>
+      </div>
+
+      {/* Valores destacados con iconos */}
+      <div class="grid grid-cols-2 gap-4 pt-3 w-full">
+        <div class="bg-green-50 rounded-lg p-4 text-center">
+          <div class="text-3xl font-bold text-green-700 mb-1">20+</div>
+          <div class="text-xs text-gray-600 font-medium">Años de experiencia</div>
+        </div>
+        <div class="bg-green-50 rounded-lg p-4 text-center">
+          <div class="text-3xl font-bold text-green-700 mb-1">3</div>
+          <div class="text-xs text-gray-600 font-medium">Variedades premium</div>
+        </div>
+        <div class="bg-green-50 rounded-lg p-4 text-center">
+          <div class="text-3xl font-bold text-green-700 mb-1">100%</div>
+          <div class="text-xs text-gray-600 font-medium">Calidad certificada</div>
+        </div>
+        <div class="bg-green-50 rounded-lg p-4 text-center">
+          <div class="text-3xl font-bold text-green-700 mb-1">🌍</div>
+          <div class="text-xs text-gray-600 font-medium">Exportación global</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

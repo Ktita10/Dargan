@@ -1,11 +1,19 @@
 "use client";
 import React from "react";
-import { HeroParallax } from "../ui/hero-parallax";
+import { HeroParallax } from "./hero-parallax";
 
 /**
- * HeroParallaxDemo - Componente de demostración del Hero con efecto Parallax
- * Muestra imágenes de los productos y servicios de Dorgan Alfalfa
- * con un efecto de desplazamiento 3D al hacer scroll
+ * HeroParallax.jsx - Componente Demo de Hero con Efecto Parallax
+ * 
+ * @description Wrapper del componente HeroParallax con las imágenes del negocio
+ * @features
+ * - 9 imágenes divididas en 3 filas (parallax)
+ * - Efecto 3D al hacer scroll
+ * - Animaciones con Framer Motion
+ * - Imágenes de cosechadoras, tractores, campos, productos
+ * 
+ * @usedIn src/components/sections/Hero.astro
+ * @dependencies hero-parallax.tsx (componente base)
  */
 export function HeroParallaxDemo() {
   return <HeroParallax products={products} />;

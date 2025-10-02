@@ -1,0 +1,277 @@
+---
+/**
+ * GaleriaMobile.astro - Galería Mobile Optimizada
+ * 
+ * @description Versión mobile de la galería con tabs scrollables
+ * @features
+ * - Tabs horizontales con scroll
+ * - Grid de 2 columnas
+ * - Imágenes optimizadas para mobile
+ * - Modal touch-friendly
+ * - Transiciones suaves
+ * 
+ * @importedIn src/components/sections/Galeria.astro (solo visible en mobile)
+ */
+
+const categories = [
+  { id: 'campos', name: 'Campos' },
+  { id: 'proceso', name: 'Proceso' },
+  { id: 'productos', name: 'Productos' },
+  { id: 'logistica', name: 'Logística' }
+];
+
+const galleryImages = {
+  campos: [
+    { src: '/images/paisaje.png', alt: 'Campo de alfalfa' },
+    { src: '/images/paisajeAbout.jpg', alt: 'Paisaje agropecuario' },
+    { src: '/images/tractortrabajando.jpg', alt: 'Tractor trabajando' },
+    { src: '/images/Patricia.png', alt: 'Variedad Patricia' }
+  ],
+  proceso: [
+    { src: '/images/tractor.png', alt: 'Tractor en proceso' },
+    { src: '/images/cosechadora.png', alt: 'Cosechadora' },
+    { src: '/images/tractortrabajando.jpg', alt: 'Proceso de trabajo' }
+  ],
+  productos: [
+    { src: '/images/productos.jpg', alt: 'Productos de alfalfa' },
+    { src: '/images/sacos.jpg', alt: 'Sacos de semillas' },
+    { src: '/images/alfalfa.png', alt: 'Alfalfa' },
+    { src: '/images/Araucana.png', alt: 'Variedad Araucana' }
+  ],
+  logistica: [
+    { src: '/images/camionCargado.jpg', alt: 'Camión cargado' },
+    { src: '/images/empresa.jpg', alt: 'Instalaciones de la empresa' }
+  ]
+};
+---
+
+<section id="galeria" class="py-12 bg-gray-50">
+  <div class="max-w-xl mx-auto px-4">
+    
+    {/* Título */}
+    <div class="text-center mb-6">
+      <h2 class="text-3xl font-bold text-green-900 mb-2">
+        Nuestra Galería
+      </h2>
+      <p class="text-base text-green-700 font-medium">
+        Conozca nuestras instalaciones y procesos
+      </p>
+    </div>
+
+    {/* Tabs scrollables horizontales */}
+    <div class="mb-6 -mx-4 px-4 overflow-x-auto">
+      <div class="flex gap-2 min-w-max pb-2">
+        {categories.map((category, index) => (
+          <button 
+            class={`tab-button-mobile ${index === 0 ? 'active' : ''} px-5 py-2 rounded-full font-semibold text-sm whitespace-nowrap transition-all duration-300 flex-shrink-0`}
+            data-category={category.id}
+            aria-label={`Ver galería de ${category.name}`}
+          >
+            {category.name}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    {/* Grid de imágenes - 2 columnas */}
+    <div class="gallery-container-mobile">
+      {Object.entries(galleryImages).map(([categoryId, images], index) => (
+        <div 
+          class={`gallery-grid-mobile ${index === 0 ? 'active' : ''}`} 
+          data-gallery={categoryId}
+        >
+          {images.map((image, imgIndex) => (
+            <div 
+              class="gallery-item-mobile cursor-pointer"
+              data-image-index={imgIndex}
+              data-image-src={image.src}
+              data-image-alt={image.alt}
+            >
+              <img 
+                src={image.src}
+                alt={image.alt}
+                class="gallery-image-mobile w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  </div>
+
+  {/* Modal para vista ampliada (lightbox) */}
+  <div 
+    id="gallery-modal-mobile" 
+    class="fixed inset-0 bg-black bg-opacity-95 z-50 hidden items-center justify-center p-4"
+  >
+    <button 
+      id="modal-close-mobile"
+      class="absolute top-4 right-4 text-white p-2 rounded-full bg-black bg-opacity-50 hover:bg-opacity-70 transition-colors z-10"
+      aria-label="Cerrar"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+    <img 
+      id="modal-image-mobile" 
+      src="" 
+      alt="" 
+      class="max-w-full max-h-full object-contain"
+    />
+  </div>
+</section>
+
+<style>
+  /* Estilos para tabs mobile */
+  .tab-button-mobile {
+    background-color: #e5e7eb;
+    color: #4b5563;
+    border: none;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+
+  .tab-button-mobile:active {
+    transform: scale(0.95);
+  }
+
+  .tab-button-mobile.active {
+    background-color: #16a34a;
+    color: white;
+    box-shadow: 0 2px 4px rgba(22, 163, 74, 0.3);
+  }
+
+  /* Grid de galería mobile */
+  .gallery-grid-mobile {
+    display: none;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    animation: fadeInMobile 0.4s ease-in-out;
+  }
+
+  .gallery-grid-mobile.active {
+    display: grid;
+  }
+
+  .gallery-item-mobile {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    aspect-ratio: 4 / 3;
+    background-color: #f3f4f6;
+    touch-action: manipulation;
+  }
+
+  .gallery-image-mobile {
+    transition: transform 0.3s ease;
+  }
+
+  .gallery-item-mobile:active .gallery-image-mobile {
+    transform: scale(0.95);
+  }
+
+  @keyframes fadeInMobile {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Modal */
+  #gallery-modal-mobile.show {
+    display: flex !important;
+  }
+
+  /* Smooth scroll para tabs */
+  .overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .overflow-x-auto::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
+<script>
+  const initGalleryMobile = () => {
+    const tabButtons = document.querySelectorAll('.tab-button-mobile');
+    const galleries = document.querySelectorAll('.gallery-grid-mobile');
+    const galleryItems = document.querySelectorAll('.gallery-item-mobile');
+    const modal = document.getElementById('gallery-modal-mobile');
+    const modalImage = document.getElementById('modal-image-mobile') as HTMLImageElement;
+    const modalClose = document.getElementById('modal-close-mobile');
+
+    // Tabs navigation
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const category = button.getAttribute('data-category');
+        if (!category) return;
+
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        galleries.forEach(gallery => gallery.classList.remove('active'));
+
+        button.classList.add('active');
+        const targetGallery = document.querySelector(`[data-gallery="${category}"]`);
+        if (targetGallery) {
+          targetGallery.classList.add('active');
+        }
+      });
+    });
+
+    // Modal functionality
+    galleryItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const src = item.getAttribute('data-image-src');
+        const alt = item.getAttribute('data-image-alt');
+        
+        if (src && modalImage && modal) {
+          modalImage.src = src;
+          modalImage.alt = alt || '';
+          modal.classList.add('show');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    });
+
+    // Close modal
+    const closeModal = () => {
+      if (modal) {
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
+      }
+    };
+
+    if (modalClose) {
+      modalClose.addEventListener('click', closeModal);
+    }
+
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+    }
+
+    // ESC key to close
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal?.classList.contains('show')) {
+        closeModal();
+      }
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initGalleryMobile);
+  } else {
+    initGalleryMobile();
+  }
+</script>

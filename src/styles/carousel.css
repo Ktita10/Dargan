@@ -1,0 +1,29 @@
+/* Carousel custom styles */
+.carousel-container {
+  --carousel-translate: 0%;
+}
+
+.carousel-slides {
+  transform: translateX(var(--carousel-translate));
+}
+
+.carousel-slide {
+  --mouse-x: 0px;
+  --mouse-y: 0px;
+}
+
+.carousel-slide-active {
+  transform: scale(1) rotateX(0deg);
+}
+
+.carousel-slide-inactive {
+  transform: scale(0.98) rotateX(8deg);
+}
+
+.carousel-slide-container-active {
+  transform: translate3d(calc(var(--mouse-x) / 30), calc(var(--mouse-y) / 30), 0);
+}
+
+.carousel-slide-container-inactive {
+  transform: none;
+}

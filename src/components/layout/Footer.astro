@@ -1,0 +1,21 @@
+---
+/**
+ * Footer.astro - Footer Principal del Sitio
+ * 
+ * @description Footer completo con navegación, logo, enlaces y redes sociales
+ * @features
+ * - Logo y descripción de la empresa
+ * - Columnas de navegación: Empresa, Productos, Servicios
+ * - Botón de contacto
+ * - Iconos de redes sociales (Facebook, Instagram, Twitter, YouTube)
+ * - Copyright y año
+ * - Fondo verde oscuro que cierra la página
+ * 
+ * @uses FooterComponent (src/ui/footer/footer.jsx)
+ * @importedIn src/pages/index.astro
+ */
+
+import FooterComponent from '../../ui/footer/footer.jsx';
+---
+
+<FooterComponent client:load />

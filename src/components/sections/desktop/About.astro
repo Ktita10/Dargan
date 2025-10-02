@@ -1,0 +1,65 @@
+---
+/**
+ * About.astro - Sección "Quiénes Somos"
+ * 
+ * @description Presenta la empresa Dorgan Alfalfa, su historia y valores
+ * @features
+ * - Títulos e introducción centrados
+ * - Grid responsive de contenido e imagen
+ * - Imágenes decorativas de fardos en los bordes
+ * - Estadísticas de la empresa
+ * - Círculos decorativos animados de fondo
+ * 
+ * @importedIn src/pages/index.astro
+ */
+---
+
+<section id="nosotros" class="relative pt-32 md:pt-40 pb-8 md:pb-12 bg-white min-h-screen flex items-center overflow-hidden">
+  {/* Imagen de fardo izquierdo - decorativa, accesible */}
+  <div class="absolute left-0 bottom-0 w-80 md:w-[28rem] lg:w-[36rem] h-auto z-0">
+    <img
+      src="/images/fardos_about_izquierda.png"
+      alt=""
+      aria-hidden="true"
+      decoding="async"
+      class="w-full h-full object-contain"
+      loading="lazy"
+    />
+  </div>
+
+  {/* Imagen de fardo derecho - decorativa, accesible */}
+  <div class="absolute right-0 bottom-0 w-80 md:w-[28rem] lg:w-[36rem] h-auto z-0">
+    <img
+      src="/images/fardos_about_derecho.png"
+      alt=""
+      aria-hidden="true"
+      decoding="async"
+      class="w-full h-full object-contain"
+      loading="lazy"
+    />
+  </div>
+
+  {/* Contenido central */}
+  <div class="max-w-4xl mx-auto px-8 sm:px-12 lg:px-16 w-full relative z-10">
+    <div class="flex flex-col justify-center items-center text-center space-y-8">
+      {/* Títulos centrados */}
+      <div class="space-y-4">
+        <h1 class="text-4xl md:text-5xl font-bold text-green-900">
+          ¿Quiénes somos?
+        </h1>
+        <h2 class="text-xl md:text-2xl font-semibold text-green-700 italic max-w-3xl mx-auto">
+          DORGAN es una empresa familiar con más de 20 años de trayectoria en el rubro agropecuario.
+        </h2>
+      </div>
+      
+      {/* Descripción centrada */}
+      <div class="max-w-3xl">
+        <p class="text-2xl md:text-3xl font-semibold text-gray-800 leading-relaxed">
+          Nos especializamos en la <span class="text-green-700 font-bold">producción</span> y <span class="text-green-700 font-bold">comercialización</span> de <span class="text-green-700 font-bold">semillas de alfalfa de alta calidad</span>, adaptadas a distintas <span class="text-green-700 font-bold">condiciones de suelo y clima</span>.
+          <br/><br/>
+          Apostamos por el <span class="text-green-700 font-bold">crecimiento del sector</span>, brindando <span class="text-green-700 font-bold">productos confiables</span>, <span class="text-green-700 font-bold">rendidores</span> y con <span class="text-green-700 font-bold">respaldo técnico personalizado</span>.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

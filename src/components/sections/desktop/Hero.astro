@@ -1,0 +1,26 @@
+---
+/**
+ * Hero.astro - Sección Hero Principal con Parallax
+ * 
+ * @description Primera sección de la página con efecto parallax en las imágenes
+ * @features
+ * - Título y descripción de Dorgan Alfalfa
+ * - 3 filas de imágenes con efecto parallax al scroll
+ * - Animaciones 3D con Framer Motion
+ * - Diseño responsive full viewport
+ * 
+ * @uses HeroParallaxDemo (src/ui/hero/HeroParallax.jsx)
+ * @importedIn src/pages/index.astro
+ */
+
+import { HeroParallaxDemo } from '../../../ui/hero/HeroParallax.jsx';
+---
+
+<!-- Contenedor del Hero con altura completa de viewport -->
+<section id="inicio" class="relative w-full min-h-screen bg-gradient-to-b from-green-50 to-white dark:from-green-950 dark:to-gray-900 pt-20">
+  <!-- 
+    client:load: Carga el componente React inmediatamente al cargar la página
+    Necesario para que Framer Motion y las animaciones funcionen correctamente
+  -->
+  <HeroParallaxDemo client:load />
+</section>

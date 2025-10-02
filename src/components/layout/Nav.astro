@@ -1,0 +1,170 @@
+---
+/**
+ * Nav.astro - Barra de Navegación Principal
+ * 
+ * @description Barra de navegación responsive con logo y menú hamburguesa para móviles
+ * @features
+ * - Logo de Dorgan Alfalfa
+ * - Menú desktop con enlaces a secciones
+ * - Menú móvil colapsable
+ * - Botón CTA "Contactar"
+ * 
+ * @importedIn src/pages/index.astro
+ */
+
+// Define la navegación en el frontmatter de Astro
+const navigation = [
+    { title: "Inicio", path: "#inicio" },
+    { title: "Nosotros", path: "#nosotros" },
+    { title: "Exportación", path: "#exportacion" },
+    { title: "Mapa Global", path: "#mapa-global" },
+    { title: "Tipos de Alfalfa", path: "#tipos-alfalfa" },
+    { title: "Productos", path: "#productos" },
+    { title: "Galería", path: "#galeria" },
+    { title: "FAQ", path: "#faq" },
+    { title: "Contacto", path: "#contacto" }
+];
+---
+
+<nav class="w-full border-b border-green-200 shadow-sm fixed top-0 left-0 z-50 backdrop-blur-sm bg-white/95">
+    <div class="items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8">
+        <div class="flex items-center justify-between py-3 md:py-5 md:block">
+            <a href="/" class="flex items-center">
+                <img
+                    src="/images/logo.png"
+                    alt="Dorgan Alfalfa - Calidad Insuperable"
+                    class="h-10 md:h-10 w-auto max-w-[420px] object-contain transition-transform hover:scale-105"
+                    loading="eager"
+                />
+            </a>
+            <div class="md:hidden">
+                <button 
+                    class="text-green-700 outline-none p-2 rounded-md focus:border-green-400 focus:border hover:bg-green-50 transition-colors"
+                    id="mobile-menu-button"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 hidden" id="mobile-menu">
+            <ul class="justify-center items-center space-y-8 md:flex md:space-x-6 md:space-y-0">
+                {navigation.map((item) => (
+                    <li class="text-green-700 hover:text-green-900 transition-colors duration-200">
+                        <a 
+                            href={item.path}
+                            class="block py-2 px-3 rounded-md hover:bg-green-50 md:hover:bg-transparent md:p-0 font-medium"
+                        >
+                            {item.title}
+                        </a>
+                    </li>
+                ))}
+            </ul>
+        </div>
+        <div class="hidden md:inline-block">
+            <a 
+                href="#contacto" 
+                class="py-3 px-6 text-white bg-green-600 hover:bg-green-700 rounded-md shadow-md transition-colors duration-200 font-medium"
+            >
+                Contactanos
+            </a>
+        </div>
+    </div>
+</nav>
+
+<script>
+    // Script para manejar el menú móvil
+    document.addEventListener('DOMContentLoaded', () => {
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                
+                // Cambiar el icono del botón
+                const svg = mobileMenuButton.querySelector('svg');
+                const isHidden = mobileMenu.classList.contains('hidden');
+                
+                if (svg) {
+                    if (isHidden) {
+                        // Icono de hamburguesa
+                        svg.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />';
+                    } else {
+                        // Icono de X
+                        svg.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />';
+                    }
+                }
+            });
+        }
+    });
+
+    // Scroll suave para todos los enlaces de navegación
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Navegación inicializada');
+        
+        // Manejar clicks en enlaces de navegación
+        const navLinks = document.querySelectorAll('a[href^="#"]');
+        console.log('Enlaces encontrados:', navLinks.length);
+        
+        navLinks.forEach((link, index) => {
+            console.log(`Enlace ${index}:`, link.getAttribute('href'));
+            
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
+                const targetId = href ? href.substring(1) : '';
+                const targetElement = document.getElementById(targetId);
+                
+                console.log('Click en enlace:', href, 'Elemento encontrado:', !!targetElement);
+                
+                if (targetElement) {
+                    // Verificar si el elemento es visible
+                    const rect = targetElement.getBoundingClientRect();
+                    const computedStyle = window.getComputedStyle(targetElement);
+                    const isVisible = computedStyle.display !== 'none' && computedStyle.visibility !== 'hidden';
+                    
+                    console.log('Elemento visible:', isVisible, 'Rect:', rect);
+                    
+                    if (isVisible) {
+                        // Usar getBoundingClientRect() para posición más precisa
+                        const navbarHeight = 80;
+                        const elementTop = window.pageYOffset + rect.top;
+                        const scrollTo = elementTop - navbarHeight;
+                        
+                        console.log('ElementTop:', elementTop, 'ScrollTo:', scrollTo);
+                        
+                        window.scrollTo({
+                            top: Math.max(0, scrollTo), // Evitar valores negativos
+                            behavior: 'smooth'
+                        });
+                    } else {
+                        // Si no es visible, buscar el contenedor padre visible
+                        let parent = targetElement.parentElement;
+                        while (parent) {
+                            const parentStyle = window.getComputedStyle(parent);
+                            if (parentStyle.display !== 'none') {
+                                const parentRect = parent.getBoundingClientRect();
+                                const parentTop = window.pageYOffset + parentRect.top;
+                                const scrollTo = parentTop - 80;
+                                
+                                console.log('Usando contenedor padre:', parent, 'ScrollTo:', scrollTo);
+                                
+                                window.scrollTo({
+                                    top: Math.max(0, scrollTo),
+                                    behavior: 'smooth'
+                                });
+                                break;
+                            }
+                            parent = parent.parentElement;
+                        }
+                    }
+                } else {
+                    console.error('Elemento no encontrado para ID:', targetId);
+                }
+            });
+        });
+    });
+</script>

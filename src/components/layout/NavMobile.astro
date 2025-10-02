@@ -1,0 +1,94 @@
+---
+/**
+ * NavMobile.astro - Barra de Navegación Mobile Optimizada
+ * 
+ * @description Navegación específica para móviles con menú hamburguesa mejorado
+ * @features
+ * - Logo responsive
+ * - Menú hamburguesa con animación smooth
+ * - Overlay de fondo
+ * - Menú lateral deslizante (slide-in)
+ * - Enlaces grandes touch-friendly
+ * - Botón CTA destacado
+ * - Cierre automático al hacer click en enlace
+ * 
+ * @importedIn src/pages/index.astro (solo visible en mobile)
+ */
+
+const navigation = [
+    { title: "Nosotros", path: "#nosotros" },
+    { title: "Exportación", path: "#exportacion" },
+    { title: "Tipos de Alfalfa", path: "#tipos-alfalfa" },
+    { title: "Productos", path: "#productos" },
+    { title: "Galería", path: "#galeria" },
+    { title: "Contacto", path: "#contacto" }
+];
+---
+
+
+<nav class="bg-white w-full fixed top-0 left-0 z-50 border-b border-green-200 shadow-md">
+    <div class="flex items-center justify-between px-4 py-3">
+        <a href="/" class="flex items-center">
+            <img src="/images/logo.png" alt="Dorgan Alfalfa" class="h-8 w-auto max-w-[180px] object-contain" loading="eager" />
+        </a>
+        <button id="simple-menu-btn" class="text-green-700 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 hover:bg-green-50 transition-colors" aria-label="Abrir menú">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
+    </div>
+    <div id="simple-menu" class="fixed top-0 right-0 h-full w-64 bg-white shadow-2xl border-l border-green-100 p-0 m-0 flex flex-col gap-0 translate-x-full transition-transform duration-200 z-50">
+        <div class="flex items-center justify-between px-4 py-4 border-b border-green-100">
+            <span class="text-lg font-bold text-green-900">Menú</span>
+            <button id="simple-menu-close" class="text-green-700 p-2 rounded-md hover:bg-green-50 transition-colors" aria-label="Cerrar menú">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <ul class="py-2">
+            <li><a href="#nosotros" class="block px-6 py-4 text-green-700 hover:bg-green-50 font-medium text-lg">Nosotros</a></li>
+            <li><a href="#exportacion" class="block px-6 py-4 text-green-700 hover:bg-green-50 font-medium text-lg">Exportación</a></li>
+            <li><a href="#tipos-alfalfa" class="block px-6 py-4 text-green-700 hover:bg-green-50 font-medium text-lg">Tipos de Alfalfa</a></li>
+            <li><a href="#productos" class="block px-6 py-4 text-green-700 hover:bg-green-50 font-medium text-lg">Productos</a></li>
+            <li><a href="#galeria" class="block px-6 py-4 text-green-700 hover:bg-green-50 font-medium text-lg">Galería</a></li>
+            <li><a href="#contacto" class="block px-6 py-4 text-green-700 hover:bg-green-50 font-medium text-lg">Contacto</a></li>
+        </ul>
+        <div class="px-4 py-4 border-t border-green-100">
+            <a href="#contacto" class="block w-full py-4 text-center text-white bg-green-600 hover:bg-green-700 rounded-lg shadow-md font-semibold text-lg">Contactanos</a>
+        </div>
+        <div class="px-4 py-6 flex justify-center">
+            <img src="/images/logo.png" alt="Dorgan Alfalfa" class="h-8 w-auto opacity-50" loading="lazy" />
+        </div>
+    </div>
+</nav>
+
+<script>
+    const btn = document.getElementById('simple-menu-btn');
+    const menu = document.getElementById('simple-menu');
+    const close = document.getElementById('simple-menu-close');
+    if (btn && menu && close) {
+        btn.onclick = () => {
+            menu.classList.remove('translate-x-full');
+            document.body.style.overflow = 'hidden';
+        };
+        close.onclick = () => {
+            menu.classList.add('translate-x-full');
+            document.body.style.overflow = '';
+        };
+        // Cerrar al hacer click en un enlace
+        menu.querySelectorAll('a').forEach(link => {
+            link.onclick = () => {
+                menu.classList.add('translate-x-full');
+                document.body.style.overflow = '';
+            };
+        });
+        // Cerrar con Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !menu.classList.contains('translate-x-full')) {
+                menu.classList.add('translate-x-full');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+</script>

@@ -1,0 +1,73 @@
+---
+/**
+ * TiposAlfalfasMobile.astro - Sección de Tipos de Alfalfa Mobile
+ * 
+ * @description Versión mobile con carrusel swipeable
+ * @features
+ * - Carrusel mobile con swipe gestures
+ * - Cards optimizadas para pantallas pequeñas
+ * - Características destacadas por variedad
+ * - Navegación con dots
+ * 
+ * @usedIn src/pages/index.astro (solo visible en mobile)
+ */
+import CarouselMobile from "../../../ui/carousel/CarouselMobile";
+---
+
+<section id="tipos-alfalfa" class="relative py-12 bg-white overflow-hidden">
+  
+  {/* Círculos flotantes de fondo - adaptados para mobile */}
+  <div class="pointer-events-none select-none absolute inset-0 z-0">
+    <div class="absolute top-[10%] left-[3%] w-32 h-32 bg-green-100 rounded-full opacity-40 blur-xl"></div>
+    <div class="absolute top-[40%] right-[5%] w-28 h-28 bg-green-200 rounded-full opacity-30 blur-xl"></div>
+    <div class="absolute bottom-[20%] left-[15%] w-24 h-24 bg-green-200 rounded-full opacity-25 blur-xl"></div>
+  </div>
+
+  <div class="max-w-xl mx-auto px-4 w-full relative z-10">
+    
+    {/* Títulos centrados */}
+    <div class="text-center mb-8 space-y-3">
+      <h2 class="text-3xl font-bold text-green-900">
+        Nuestros Productos
+      </h2>
+      <p class="text-base font-semibold text-green-700 italic">
+        Tres variedades de alfalfa de alta calidad
+      </p>
+    </div>
+
+    {/* Carrusel Mobile */}
+    <div class="relative w-full">
+      <CarouselMobile 
+        client:load
+        slides={[
+          {
+            title: "Patricia",
+            button: "Descubrir Patricia",
+            src: "/images/Patricia.png"
+          },
+          {
+            title: "Monarca", 
+            button: "Conocer Monarca",
+            src: "/images/Monarca.png"
+          },
+          {
+            title: "Araucana",
+            button: "Explorar Araucana",
+            src: "/images/Araucana.png"
+          }
+        ]}
+      />
+    </div>
+
+    {/* CTA adicional */}
+    <div class="mt-8 text-center">
+      <a 
+        href="#productos"
+        class="inline-block px-8 py-3 bg-green-600 hover:bg-green-700 active:bg-green-800 text-white font-semibold rounded-full shadow-lg transition-all duration-300 text-sm active:scale-95"
+      >
+        Ver Más Detalles
+      </a>
+    </div>
+
+  </div>
+</section>

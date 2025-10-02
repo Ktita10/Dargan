@@ -1,0 +1,128 @@
+---
+/**
+ * ExportSectionMobile.astro - Sección de Exportación Mobile
+ * 
+ * @description Versión mobile de la sección de exportación
+ * @features
+ * - Cards verticales apiladas
+ * - Iconos y textos optimizados
+ * - Spacing touch-friendly
+ * - Descripción concisa y legible
+ * 
+ * @importedIn src/components/sections/ExportSection.astro (solo visible en mobile)
+ */
+---
+
+<section id="exportacion" class="relative pt-0 pb-6 bg-white overflow-hidden">
+  {/* Círculos decorativos adaptados para mobile */}
+  <div class="pointer-events-none select-none absolute inset-0 z-0">
+    <div class="absolute top-[10%] left-[5%] w-32 h-32 bg-green-100 rounded-full opacity-40 blur-xl"></div>
+    <div class="absolute bottom-[15%] right-[5%] w-40 h-40 bg-green-200 rounded-full opacity-30 blur-xl"></div>
+  </div>
+
+  <div class="relative z-10 max-w-xl mx-auto px-4">
+    
+    {/* Título principal */}
+    <div class="text-center mb-8">
+      <h2 class="text-3xl font-bold text-green-900 mb-3">
+        Exportación de Forrajes
+      </h2>
+      <p class="text-base font-semibold text-green-700 italic">
+        Calidad internacional y presencia global
+      </p>
+    </div>
+
+    {/* Descripción principal */}
+    <div class="bg-white rounded-xl shadow-lg p-5 mb-6 border-2 border-green-100">
+      <p class="text-sm text-gray-700 leading-relaxed mb-3">
+        Exportamos <span class="text-green-700 font-bold">fardos compactos de alfalfa</span> bajo 
+        <span class="text-green-700 font-bold">estrictos controles de calidad</span>.
+      </p>
+      <p class="text-sm text-gray-700 leading-relaxed">
+        Nuestra <span class="text-green-700 font-bold">tecnología de compactado</span> asegura 
+        <span class="text-green-700 font-bold">conservación de nutrientes</span> y facilita 
+        <span class="text-green-700 font-bold">transporte y almacenamiento</span>.
+      </p>
+    </div>
+
+    {/* Stack de características */}
+    <div class="space-y-4">
+      
+      {/* Cobertura Nacional */}
+      <div class="bg-white rounded-xl shadow-md p-4 border-l-4 border-green-600 hover:shadow-lg transition-shadow duration-300">
+        <div class="flex items-start gap-3">
+          <div class="flex-shrink-0 w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+            </svg>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-base font-bold text-green-900 mb-1">
+              Cobertura Nacional
+            </h3>
+            <p class="text-sm text-gray-600">
+              Llegamos a <span class="font-semibold text-green-700">todo el país</span> con logística eficiente
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Fumigación con Drones */}
+      <div class="bg-white rounded-xl shadow-md p-4 border-l-4 border-green-600 hover:shadow-lg transition-shadow duration-300">
+        <div class="flex items-start gap-3">
+          <div class="flex-shrink-0 w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+            </svg>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-base font-bold text-green-900 mb-1">
+              Tecnología Avanzada
+            </h3>
+            <p class="text-sm text-gray-600">
+              <span class="font-semibold text-green-700">Fumigación con drones</span> de última generación
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Exportación Brasil */}
+      <div class="bg-white rounded-xl shadow-md p-4 border-l-4 border-green-600 hover:shadow-lg transition-shadow duration-300">
+        <div class="flex items-start gap-3">
+          <div class="flex-shrink-0 w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-base font-bold text-green-900 mb-1">
+              Mercados Regionales
+            </h3>
+            <p class="text-sm text-gray-600">
+              Exportamos a <span class="font-semibold text-green-700">Brasil y Uruguay</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Exportación Dubai */}
+      <div class="bg-white rounded-xl shadow-md p-4 border-l-4 border-green-600 hover:shadow-lg transition-shadow duration-300">
+        <div class="flex items-start gap-3">
+          <div class="flex-shrink-0 w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+            </svg>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-base font-bold text-green-900 mb-1">
+              Alcance Global
+            </h3>
+            <p class="text-sm text-gray-600">
+              Presencia en <span class="font-semibold text-green-700">Medio Oriente (Dubai)</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
